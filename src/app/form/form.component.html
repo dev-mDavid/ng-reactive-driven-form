@@ -1,1 +1,13 @@
-<p>form works!</p>
+<div class="ui">
+  <h2>Demo Form: Sku</h2>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+
+    <div class="field">
+      <label for="skuInput">SKU</label>
+      <input id="skuInput" type="text" placeholder="SKU" name="sku" ngModel>
+    </div>
+
+    <button type="submit">Submit</button>
+    <p>*your submission will be logged in the console </p>
+  </form>
+</div>

@@ -1,21 +1,21 @@
 <div class="ui">
   <h2>Demo Form: Sku</h2>
   <form [formGroup]="myForm"
-        (ngSubmit)="onSubmit(myForm.value)"
-        [class.error]="!myForm.valid && myForm.touched">
+        (ngSubmit)="onSubmit(myForm.value)">
 
-    <div class="field"
-          [class.error]="!sku.valid && sku.touched">
+    <div class="field">
       <label for="skuInput">SKU</label>
       <input id="skuInput" 
               type="text" 
               placeholder="SKU" 
-              [formControl]="sku">
-      <div *ngIf="!sku.valid">SKU is invalid</div>
-      <div *ngIf="sku.hasError('required')">SKU is required</div>
+              [formControl]="sku"
+              [class.error]="sku.hasError('required') && sku.touched">
+
+      <div *ngIf="sku.touched && !myForm.controls['sku']">SKU is invalid</div>
+      <div *ngIf="sku.touched && sku.hasError('required')">SKU is required</div>
     </div>
   
-    <div *ngIf="!myForm.valid">Form is invalid</div>
+    <div *ngIf="myForm.touched && !myForm.valid">Form is invalid</div>
     <button type="submit">Submit</button>
     <p>*your submission will be logged in the console </p>
   </form>

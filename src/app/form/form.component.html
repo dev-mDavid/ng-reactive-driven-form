@@ -9,6 +9,8 @@
               type="text" 
               placeholder="SKU" 
               [formControl]="myForm.controls['sku']">
+      <div *ngIf="!sku.valid" class="error">SKU is invalid</div>
+      <div *ngIf="sku.hasError('required')"></div>
     </div>
 
     <button type="submit">Submit</button>

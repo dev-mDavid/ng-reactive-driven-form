@@ -4,13 +4,24 @@
         (ngSubmit)="onSubmit(myForm.value)">
 
     <div class="field">
+
+      <label for="productNameInput">Product Name</label>
+      <input type="text" 
+              id="productNameInput" 
+              placeholder="Product Name" 
+              name="productName"              
+      >
+
       <label for="skuInput">SKU</label>
       <input id="skuInput" 
               type="text" 
               placeholder="SKU" 
               [formControl]="sku"
               [class.error]="myForm.controls['sku'].hasError('required') && 
-                            myForm.controls['sku'].touched">
+                            myForm.controls['sku'].touched"
+      >
+      
+                            
       <div *ngIf="myForm.controls['sku'].touched && 
                   !myForm.controls['sku']">
         SKU is invalid

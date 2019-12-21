@@ -9,11 +9,16 @@ export class FormComponent implements OnInit {
   myForm: FormGroup;
   sku: AbstractControl;
 
+
+
   constructor(fb: FormBuilder) { 
     this.myForm = fb.group({
       'sku': ['', Validators.compose([
         Validators.required, skuValidator])]
-    });
+
+      });
+
+
 
     this.sku = this.myForm.controls['sku'];
 

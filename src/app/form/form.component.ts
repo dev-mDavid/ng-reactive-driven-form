@@ -17,6 +17,18 @@ export class FormComponent implements OnInit {
 
     this.sku = this.myForm.controls['sku'];
 
+    this.sku.valueChanges.subscribe(
+      (value: string) => {
+        console.log('sku changed to:', value);
+      }
+    );
+
+    this.myForm.valueChanges.subscribe(
+      (form: any) => {
+        console.log('form changed to:', form);
+      }
+    );
+
     function skuValidator(control: FormControl): { [s: string]: boolean} {
       if (!control.value.match(/^123/)) {
         return {invalidSku: true};

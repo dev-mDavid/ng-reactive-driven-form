@@ -11,7 +11,6 @@
               [formControl]="sku"
               [class.error]="myForm.controls['sku'].hasError('required') && 
                             myForm.controls['sku'].touched">
-      <p>*you submission must start with "123"</p>
       <div *ngIf="myForm.controls['sku'].touched && 
                   !myForm.controls['sku']">
         SKU is invalid
@@ -22,8 +21,16 @@
         SKU is required
       </div>
     </div>
-  
-    <div *ngIf="myForm.touched && !myForm.valid">Form is invalid</div>
+    
+    <div *ngIf="myForm.touched && 
+                !myForm.valid"
+    >
+      Form is invalid
+    </div>
+    <div *ngIf="sku.hasError('invalidSku')">
+      <p>SKU must start with begin with "123"</p>
+    </div
+    >
     <button type="submit">
       Submit
     </button>

@@ -9,14 +9,24 @@
               type="text" 
               placeholder="SKU" 
               [formControl]="sku"
-              [class.error]="sku.hasError('required') && sku.touched">
+              [class.error]="myForm.controls['sku'].hasError('required') && 
+                            myForm.controls['sku'].touched">
 
-      <div *ngIf="sku.touched && !myForm.controls['sku']">SKU is invalid</div>
-      <div *ngIf="sku.touched && sku.hasError('required')">SKU is required</div>
+      <div *ngIf="myForm.controls['sku'].touched && 
+                  !myForm.controls['sku']">
+        SKU is invalid
+      </div>
+      <div *ngIf="myForm.controls['sku'].touched && 
+                  myForm.controls['sku'].hasError('required')"
+      >
+        SKU is required
+      </div>
     </div>
   
     <div *ngIf="myForm.touched && !myForm.valid">Form is invalid</div>
-    <button type="submit">Submit</button>
+    <button type="submit">
+      Submit
+    </button>
     <p>*your submission will be logged in the console </p>
   </form>
 </div>

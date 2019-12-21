@@ -1,5 +1,5 @@
 <div class="ui">
-  <h2>Demo Form: Sku</h2>
+  <h2>Demo Form: Sku</h2>  
   <form [formGroup]="myForm"
         (ngSubmit)="onSubmit(myForm.value)">
 
@@ -11,7 +11,7 @@
               [formControl]="sku"
               [class.error]="myForm.controls['sku'].hasError('required') && 
                             myForm.controls['sku'].touched">
-
+      <p>*you submission must start with "123"</p>
       <div *ngIf="myForm.controls['sku'].touched && 
                   !myForm.controls['sku']">
         SKU is invalid
@@ -27,6 +27,6 @@
     <button type="submit">
       Submit
     </button>
-    <p>*your submission will be logged in the console </p>
+    <p id=submit-hint>*your submission will be logged in the console </p>
   </form>
 </div>

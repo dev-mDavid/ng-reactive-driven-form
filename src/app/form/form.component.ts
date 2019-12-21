@@ -11,10 +11,17 @@ export class FormComponent implements OnInit {
 
   constructor(fb: FormBuilder) { 
     this.myForm = fb.group({
-      'sku': ['', Validators.required]
+      'sku': ['', Validators.compose([
+        Validators.required, skuValidator])]
     });
 
     this.sku = this.myForm.controls['sku'];
+
+    function skuValidator(control: FormControl): { [s: string]: boolean} {
+      if (!control.value.match(/^123/)) {
+        return {invalidSku: true};
+      }
+    }
   }
   
   ngOnInit() {
@@ -24,4 +31,5 @@ export class FormComponent implements OnInit {
     console.log('you submitted value: ', value);
   }
 
+  
 }
